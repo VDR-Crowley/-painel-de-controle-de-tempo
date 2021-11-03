@@ -1,0 +1,106 @@
+:root {
+  /* Primary */
+  --Blue: hsl(246, 80%, 60%);
+
+  --Light-red-work: hsl(15, 100%, 70%);
+  --Soft-blue-play: hsl(195, 74%, 62%);
+  --Light-red-study: hsl(348, 100%, 68%);
+  --Lime-green-exercise: hsl(145, 58%, 55%);
+  --Violet-social: hsl(264, 64%, 52%);
+  --Soft-orange-self-care: hsl(43, 84%, 65%);
+
+  /* Neutral */
+  --Very-dark-blue: hsl(226, 43%, 10%);
+  --Dark-blue: hsl(235, 46%, 20%);
+  --Desaturated-blue: hsl(235, 45%, 61%);
+  --Pale-Blue: hsl(236, 100%, 87%);
+
+  font-size: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-areas: "aside main" "aside main";
+  grid-gap: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid blue
+}
+
+aside {
+  background-color: var(--Dark-blue);
+  border:1px solid hsl(15, 100%, 70%); 
+}
+
+.perfil-content {
+  background-color: var(--Blue);
+}
+
+main {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "work play study" "exercise social self";
+}
+
+/*
+  grid-area
+*/
+.work {grid-area: work;}
+.play {grid-area: play;}
+.study {grid-area: study;}
+.exercise {grid-area: exercise;}
+.social {grid-area: social;}
+.self {grid-area: self;}
+
+.card {
+  border: 1px solid red
+}
+
+.card a {
+  padding: 1rem;
+  color: white;
+  background-color: var(--Dark-blue);
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.three-points {
+
+}
+
+.card-hours {
+
+}
+
+.card-previous {
+
+}

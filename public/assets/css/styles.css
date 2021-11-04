@@ -25,6 +25,7 @@
 }
 
 body {
+  background-color: var(--Very-dark-blue);
   font-family: 'Rubik', sans-serif;
 }
 
@@ -44,12 +45,11 @@ img {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-columns: minmax(300px, auto) 1fr;
   grid-template-areas: "aside main" "aside main";
   grid-gap: 0 10px;
   max-width: 1200px;
-  margin: 0 auto;
-  border: 1px solid blue
+  margin: 50px auto;
 }
 
 /* Inicio perfil */
@@ -57,18 +57,17 @@ img {
 aside {
   border-radius: 15px;
   background-color: var(--Dark-blue);
-  border:1px solid hsl(15, 100%, 70%); 
 }
 
 /* perfil */
 .perfil-content {
   border-radius: 15px;
   background-color: var(--Blue);
-  padding: 2rem 0;
+  padding: 2rem 0 5rem;
 }
 
 .perfil-container {
-  margin-left: 1rem;
+  margin-left: 2rem;
   max-width: 100px;
   display: flex;
   flex-direction: column;
@@ -87,8 +86,9 @@ aside {
 }
 
 .perfil-container h1 {
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  margin-top: .3rem;
   font-weight: 300;
   color: white;
 }
@@ -96,19 +96,25 @@ aside {
 /* navegacao */
 
 nav {
-
+  margin-left: 2rem;
+  max-width: 100px;
+  padding: 1.5rem 0;
 }
 
-nav ul {
-
-}
-
-nav ul li {
-
+nav li + li {
+  margin-top: 1rem;
 }
 
 nav ul li a {
   color: var(--Desaturated-blue);
+  transition: .2s;
+}
+nav ul li a:hover {
+  color: var(--Pale-Blue);
+}
+
+nav ul li a.active {
+  color: white;
 }
 
 /* Fim Perfil */
@@ -123,7 +129,10 @@ main {
 /*
   grid-area
 */
-.work {grid-area: work;}
+.work {
+  grid-area: work;
+  background: var(--Light-red-work) url(../../images/icon-work.svg) no-repeat 90% -5%;
+}
 .play {grid-area: play;}
 .study {grid-area: study;}
 .exercise {grid-area: exercise;}
@@ -135,6 +144,7 @@ main {
 }
 
 .card a {
+  margin-top: 3rem;
   padding: 1rem;
   color: white;
   background-color: var(--Dark-blue);

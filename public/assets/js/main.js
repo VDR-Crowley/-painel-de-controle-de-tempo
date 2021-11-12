@@ -1,38 +1,37 @@
 "use strict";
 const navs = document.querySelectorAll('nav ul li a');
-async function buscarDados() {
+async function fetchData() {
     try {
-        let req = await fetch("./src/data.json");
-        let texto = await req.text();
-        let json = JSON.parse(texto);
+        const req = await fetch("./src/data.json");
+        const texto = await req.text();
+        const json = JSON.parse(texto);
         return json;
     }
     catch (e) {
         console.log(e);
     }
 }
-function cardF(title, current, previous) {
-    const c = document.querySelector(`#${title} .card-hours`);
-    const l = document.querySelector(`#${title} .card-previous span`);
-    c.innerHTML = String(current) + "hrs";
-    l.innerHTML = String(previous);
+function showCard(title, current, previous) {
+    const hour = document.querySelector(`#${title} .card-hours`);
+    const lastWeek = document.querySelector(`#${title} .card-previous span`);
+    hour.innerHTML = String(current) + "hrs";
+    lastWeek.innerHTML = String(previous);
 }
-function percorrerCard(cards, obj, objD) {
+function traverseObject(cards, obj, times) {
     let previous;
     let current = 0;
     cards.forEach(card => {
-        let cardId = card;
-        let c = String(cardId.id) === String(obj.title);
-        if (c) {
-            current = objD.current;
-            previous = objD.previous;
-            cardF(obj.title, current, previous);
+        const cardId = card;
+        const checkIdTitle = String(cardId.id) === String(obj.title);
+        if (checkIdTitle) {
+            current = times.current;
+            previous = times.previous;
+            showCard(obj.title, current, previous);
         }
     });
 }
-function anchorCheck(anchor, data) {
+function anchorsCheck(anchor) {
     const achors = document.querySelectorAll('nav ul li a');
-    console.log(data);
     achors.forEach(a => {
         if (a === anchor) {
             a.classList.add('active');
@@ -42,47 +41,47 @@ function anchorCheck(anchor, data) {
         }
     });
 }
-function montaDash(anchor, json) {
-    let cards = document.querySelectorAll(".card");
-    const dataIdentific = anchor.getAttribute("data-indetific");
-    switch (dataIdentific) {
+function rideDash(anchor, json) {
+    const cards = document.querySelectorAll(".card");
+    const dataCheck = anchor.getAttribute("data-indetific");
+    switch (dataCheck) {
         case "daily":
-            anchorCheck(anchor, dataIdentific);
-            let objD = {};
+            anchorsCheck(anchor);
+            let objDaily = {};
             json.forEach(item => {
-                objD = item;
-                let o = objD.timeframes.daily;
-                percorrerCard(cards, objD, o);
+                objDaily = item;
+                const daily = objDaily.timeframes.daily;
+                traverseObject(cards, objDaily, daily);
             });
             break;
         case "weekly":
-            anchorCheck(anchor, dataIdentific);
-            let objW = {};
+            anchorsCheck(anchor);
+            let objWeekly = {};
             json.forEach(item => {
-                objW = item;
-                let o = objW.timeframes.weekly;
-                percorrerCard(cards, objW, o);
+                objWeekly = item;
+                const weekly = objWeekly.timeframes.weekly;
+                traverseObject(cards, objWeekly, weekly);
             });
             break;
         case "monthly":
-            anchorCheck(anchor, dataIdentific);
-            let objM = {};
+            anchorsCheck(anchor);
+            let objMonthly = {};
             json.forEach(item => {
-                objM = item;
-                let o = objM.timeframes.monthly;
-                percorrerCard(cards, objM, o);
+                objMonthly = item;
+                const monthly = objMonthly.timeframes.monthly;
+                traverseObject(cards, objMonthly, monthly);
             });
             break;
     }
 }
-async function peopleDados(event) {
-    let json = await buscarDados();
-    let anchorCheck = event.target;
+async function peopleHours(event) {
+    const json = await fetchData();
+    const anchorCheck = event.target;
     if (!anchorCheck.classList.contains("active")) {
-        montaDash(anchorCheck, json);
+        rideDash(anchorCheck, json);
     }
     else {
         window.location.reload();
     }
 }
-navs.forEach(anchor => anchor.addEventListener('click', peopleDados));
+navs.forEach(anchor => anchor.addEventListener('click', peopleHours));

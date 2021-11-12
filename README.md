@@ -5,7 +5,8 @@
 ## Welcome! 👋
 
 Projeto em andamento
-![Veja o projeto ao vivo no netlify](https://elegant-mccarthy-125823.netlify.app/)
+
+[Veja o projeto ao vivo no netlify](https://elegant-mccarthy-125823.netlify.app/)
 
 ## Tecnologias usadas no projeto
 

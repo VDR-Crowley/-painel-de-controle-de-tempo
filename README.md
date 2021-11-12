@@ -41,10 +41,15 @@ URL do site ativo: [URL do site ativo](https://elegant-mccarthy-125823.netlify.a
 ## Meu processo
 
 Construído com Marcação HTML5 semântica
+
 Propriedades personalizadas CSS
+
 Flexbox
+
 CSS Grid
+
 Requisições Assincronas (async await)
+
 Utilizar as typagens do Typescript
 
 ## Autor

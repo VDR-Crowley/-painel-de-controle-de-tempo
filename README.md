@@ -5,3 +5,10 @@
 ## Welcome! 👋
 
 Projeto em andamento
+
+## Tecnologias usadas no projeto
+
+> Typescript
+> HTML 5
+> CSS 3
+> Git

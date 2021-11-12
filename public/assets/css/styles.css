@@ -47,7 +47,7 @@ img {
   display: grid;
   grid-template-columns: minmax(300px, auto) 1fr;
   grid-template-areas: "aside main" "aside main";
-  grid-gap: 0 10px;
+  grid-gap: 0 20px;
   max-width: 1200px;
   margin: 50px auto;
 }
@@ -121,7 +121,7 @@ nav ul li a.active {
 
 main {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas: "work play study" "exercise social self";
 }
@@ -133,36 +133,68 @@ main {
   grid-area: work;
   background: var(--Light-red-work) url(../../images/icon-work.svg) no-repeat 90% -5%;
 }
-.play {grid-area: play;}
-.study {grid-area: study;}
-.exercise {grid-area: exercise;}
-.social {grid-area: social;}
-.self {grid-area: self;}
+.play {
+  grid-area: play; 
+  background: var(--Soft-blue-play) url(../../images/icon-play.svg) no-repeat 90% -5%;
+}
+.study {
+  grid-area: study;
+  background: var(--Light-red-study) url(../../images/icon-study.svg) no-repeat 90% -5%;
+}
+.exercise {
+  grid-area: exercise;
+  background: var(--Lime-green-exercise) url(../../images/icon-exercise.svg) no-repeat 90% -1%;
+}
+.social {
+  grid-area: social;
+  background: var(--Violet-social) url(../../images/icon-social.svg) no-repeat 90% -2%;
+}
+.self {
+  grid-area: self;
+  background: var(--Soft-orange-self-care) url(../../images/icon-self-care.svg) no-repeat 90% -5%;
+}
 
 .card {
-  border: 1px solid red
+  border-radius: 20px 20px 25px 25px;
 }
 
 .card a {
-  margin-top: 3rem;
+  height: calc(100% - 2.6rem);
+  margin-top: 2.6rem;
   padding: 1rem;
   color: white;
   background-color: var(--Dark-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
 }
 
 .card-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .three-points {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
+.three-points span {
+  margin-bottom: .5rem;
 }
 
 .card-hours {
+  font-weight: 300;
+  font-size: 3rem;
 
 }
 
 .card-previous {
+  font-size: .8rem;
+  color: var(--Desaturated-blue);
 
 }

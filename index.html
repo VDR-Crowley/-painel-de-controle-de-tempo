@@ -15,7 +15,6 @@
 
   <title>Frontend Mentor | Time tracking dashboard</title>
 
-  <script src="assets/js/main.js" defer></script>
 </head>
 
 <body>
@@ -31,9 +30,9 @@
 
       <nav>
         <ul>
-          <li><a href="#">Daily</a></li>
-          <li><a href="#" class="active">Weekly</a></li>
-          <li><a href="#">Monthly</a></li>
+          <li><a href="#" id="daily" data-indetific="daily">Daily</a></li>
+          <li><a href="#" id="weekly" data-indetific="weekly" class="">Weekly</a></li>
+          <li><a href="#" id="monthly" data-indetific="monthly">Monthly</a></li>
         </ul>
       </nav>
     </aside>
@@ -41,11 +40,11 @@
 
     <main>
 
-      <div class="card work">
+      <div class="card work" id="Work">
         <a href="#">
           <div class="card-title">
             <span>Work</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">32hrs</div>
@@ -67,11 +66,11 @@
         </a>
       </div>
 
-      <div class="card play">
+      <div class="card play" id="Play">
         <a href="#">
           <div class="card-title">
             <span>Play</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">10hrs</div>
@@ -93,11 +92,11 @@
         </a>
       </div>
 
-      <div class="card study">
+      <div class="card study" id="Study">
         <a href="#">
           <div class="card-title">
             <span>Study</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">4hrs</div>
@@ -119,11 +118,11 @@
         </a>
       </div>
 
-      <div class="card exercise">
+      <div class="card exercise" id="Exercise">
         <a href="#">
           <div class="card-title">
             <span>Exercise</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">4hrs</div>
@@ -145,11 +144,11 @@
         </a>
       </div>
 
-      <div class="card social">
+      <div class="card social" id="Social">
         <a href="#">
           <div class="card-title">
             <span>Social</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">5hrs</div>
@@ -171,11 +170,11 @@
         </a>
       </div>
 
-      <div class="card self">
+      <div class="card self" id="Self-Care">
         <a href="#">
           <div class="card-title">
             <span>Self Care</span>
-            <div class="three-points">...</div>
+            <div class="three-points"><span>...</span></div>
           </div>
 
           <div class="card-hours">2hrs</div>
@@ -201,6 +200,7 @@
     </main>
   </div>
 
+  <script src="./public/assets/js/main.js" defer></script>
 </body>
 
 </html>

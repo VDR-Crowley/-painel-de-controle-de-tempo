@@ -159,7 +159,7 @@ main {
 }
 
 .card a {
-  height: calc(100% - 2.6rem);
+  height: calc(100% - 2.5rem);
   margin-top: 2.6rem;
   padding: 1rem;
   color: white;
@@ -168,6 +168,10 @@ main {
   flex-direction: column;
   justify-content: space-around;
   border-radius: 20px;
+}
+
+.card a:hover {
+  filter: brightness(150%);
 }
 
 .card-title {
@@ -187,14 +191,96 @@ main {
   margin-bottom: .5rem;
 }
 
+.work .three-points span:hover {
+  color: var(--Light-red-work);
+}
+
+.play .three-points span:hover {
+  color: var(--Soft-blue-play);
+}
+
+.study .three-points span:hover {
+  color: var(--Light-red-study);
+}
+
+.exercise .three-points span:hover {
+  color: var(--Lime-green-exercise);
+}
+
+.social .three-points span:hover {
+  color: var(--Violet-social);
+}
+
+.self .three-points span:hover {
+  color: var(--Soft-orange-self-care);
+}
+
 .card-hours {
   font-weight: 300;
   font-size: 3rem;
-
 }
 
 .card-previous {
   font-size: .8rem;
   color: var(--Desaturated-blue);
+}
 
+@media (max-width: 769px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "aside" 
+        "main";
+    grid-gap: 30px;
+  }
+
+  .perfil-container {
+    max-width: 100%;
+  }
+
+  main {
+    grid-gap: 20px;
+    padding: 0 20px
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "work" 
+        "play" "study"
+        "exercise" 
+        "social" 
+        "self";
+  }
+  nav ul li a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 420px) and (max-width: 599px) {
+  .card a {
+    padding: 2rem
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-hours {
+    font-size: 3.2rem;
+    padding: 1rem 0;
+  }
+
+  .card-previous {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 419px) {
+  .perfil-container h1 {
+    line-height: 3rem;
+  }
 }

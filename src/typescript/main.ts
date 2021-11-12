@@ -32,7 +32,7 @@ async function buscarDados() {
 function cardF( title: string, current: number, previous: number) {
   const c = document.querySelector(`#${title} .card-hours`) as Element;
   const l = document.querySelector(`#${title} .card-previous span`) as Element;
-  console.log(c)
+  //console.log(c)
   c.innerHTML = String(current)+"hrs";
   l.innerHTML = String(previous);
 }
@@ -59,6 +59,20 @@ function percorrerCard(cards: NodeList, obj: timeframe, objD: {current: number, 
 
 }
 
+function anchorCheck(anchor: HTMLAnchorElement, data: string) {
+  //let daily = document.getElementById('daily');
+  const achors = document.querySelectorAll('nav ul li a');
+  console.log(data)
+  achors.forEach(a => {
+    if(a === anchor) {
+      a.classList.add('active');
+    } else {
+      a.classList.remove('active');
+    }
+  }) 
+  
+}
+
 function montaDash(anchor: HTMLAnchorElement, json: []) {
   let cards: NodeList = document.querySelectorAll(".card");
   const dataIdentific = anchor.getAttribute("data-indetific");
@@ -67,16 +81,19 @@ function montaDash(anchor: HTMLAnchorElement, json: []) {
  
   switch (dataIdentific) {
     case "daily":
+      anchorCheck(anchor, dataIdentific);
+      //anchor.nextElementSibling?.removeAttribute('class');
       let objD: timeframe = {} as timeframe;
       json.forEach(item => {
         objD = item as timeframe;
         let o: { current: number, previous: number} = objD.timeframes.daily;
-        console.log("o",o);
+        //console.log("o",o);
         percorrerCard(cards, objD, o);
       });
       break;
     
     case "weekly":
+      anchorCheck(anchor, dataIdentific);
       let objW: timeframe = {} as timeframe;
       json.forEach(item => {
         objW = item as timeframe;
@@ -87,6 +104,7 @@ function montaDash(anchor: HTMLAnchorElement, json: []) {
       break;
 
     case "monthly":
+      anchorCheck(anchor, dataIdentific);
       let objM: timeframe = {} as timeframe;
       json.forEach(item => {
         objM = item as timeframe;
@@ -97,38 +115,15 @@ function montaDash(anchor: HTMLAnchorElement, json: []) {
       break;
   }
 }
-/* 
-function montaObject(json: []): timeframe {
-  let time: timeframe = {} as timeframe;
-  json.forEach(item => {
-    let obj: timeframe = item
-    if(typeof(obj) === 'object') {
-      time = obj;
-    }
-    return time
-  })
-  return time;
-}
-
-
-function trataDaily(d: []) {
-  let dai = {};
-  d.forEach( (item, index) => {
-    if(typeof item === 'object') {
-      if(index === 0) {
-        dai = item;
-      }
-    }
-  });
-  return dai;
-}*/
 
 async function peopleDados(event: Event) {
   let json: [] = await buscarDados();
   let anchorCheck = event.target as HTMLAnchorElement;
+  
   if(!anchorCheck.classList.contains("active")) {
-    anchorCheck.classList.add('active');
     montaDash(anchorCheck, json);
+  } else {
+    window.location.reload();
   }
 }
 

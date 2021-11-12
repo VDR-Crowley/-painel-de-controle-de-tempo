@@ -14,7 +14,6 @@ async function buscarDados() {
 function cardF(title, current, previous) {
     const c = document.querySelector(`#${title} .card-hours`);
     const l = document.querySelector(`#${title} .card-previous span`);
-    console.log(c);
     c.innerHTML = String(current) + "hrs";
     l.innerHTML = String(previous);
 }
@@ -31,20 +30,33 @@ function percorrerCard(cards, obj, objD) {
         }
     });
 }
+function anchorCheck(anchor, data) {
+    const achors = document.querySelectorAll('nav ul li a');
+    console.log(data);
+    achors.forEach(a => {
+        if (a === anchor) {
+            a.classList.add('active');
+        }
+        else {
+            a.classList.remove('active');
+        }
+    });
+}
 function montaDash(anchor, json) {
     let cards = document.querySelectorAll(".card");
     const dataIdentific = anchor.getAttribute("data-indetific");
     switch (dataIdentific) {
         case "daily":
+            anchorCheck(anchor, dataIdentific);
             let objD = {};
             json.forEach(item => {
                 objD = item;
                 let o = objD.timeframes.daily;
-                console.log("o", o);
                 percorrerCard(cards, objD, o);
             });
             break;
         case "weekly":
+            anchorCheck(anchor, dataIdentific);
             let objW = {};
             json.forEach(item => {
                 objW = item;
@@ -53,6 +65,7 @@ function montaDash(anchor, json) {
             });
             break;
         case "monthly":
+            anchorCheck(anchor, dataIdentific);
             let objM = {};
             json.forEach(item => {
                 objM = item;
@@ -66,8 +79,10 @@ async function peopleDados(event) {
     let json = await buscarDados();
     let anchorCheck = event.target;
     if (!anchorCheck.classList.contains("active")) {
-        anchorCheck.classList.add('active');
         montaDash(anchorCheck, json);
+    }
+    else {
+        window.location.reload();
     }
 }
 navs.forEach(anchor => anchor.addEventListener('click', peopleDados));

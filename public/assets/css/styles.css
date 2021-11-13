@@ -245,6 +245,10 @@ main {
 }
 
 @media (max-width: 600px) {
+  .container {
+    margin: 0 auto 50px;
+  }
+  
   main {
     grid-gap: 20px;
     grid-template-columns: 1fr;

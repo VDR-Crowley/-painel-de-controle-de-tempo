@@ -99,5 +99,8 @@
   },
   "include": [
     "./src/typescript"
+  ],
+  "exclude": [
+    "./*.md"
   ]
 }

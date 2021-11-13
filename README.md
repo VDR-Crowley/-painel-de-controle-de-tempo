@@ -48,7 +48,7 @@ Os usuários devem ser capazes de:
 <ul>
 <li>Construído com Marcação HTML5 semântica</li>
 
-<li>Propriedades personalizadas CSS<li>
+<li>Propriedades personalizadas CSS</li>
 
 <li>Flexbox</li>
 
